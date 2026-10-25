@@ -1,0 +1,26 @@
+{
+  "name": "zenithos-web-admin",
+  "version": "1.0.0",
+  "description": "ZenithOS Web Management Backend - 裸机操作系统Web可视化管理后台",
+  "main": "server.js",
+  "bin": {
+    "zenithos-admin": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zenithos",
+    "operating-system",
+    "web-admin",
+    "websocket",
+    "serial"
+  ],
+  "author": "ZenithOS Team",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

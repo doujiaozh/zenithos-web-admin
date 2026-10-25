@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenithOS Web Admin | 裸机操作系统管理终端</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部标题栏 -->
+        <header class="header">
+            <div class="logo">
+                <span class="hostname">ZENITHOS</span>
+                <span class="status">● ONLINE</span>
+            </div>
+            <div class="connection-status">
+                <span class="status-indicator" id="status-indicator"></span>
+                <span id="connection-text">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 左侧：日志控制区 -->
+            <div class="panel log-panel">
+                <div class="panel-header">
+                    <h2>Kernel Log Stream</h2>
+                    <div class="log-controls">
+                        <button id="trigger-arp" class="btn btn-primary">
+                            <span>📡</span> Trigger ARP
+                        </button>
+                        <button id="clear-screen" class="btn btn-secondary">
+                            <span>🧹</span> Clear Screen
+                        </button>
+                        <button id="restart-os" class="btn btn-danger">
+                            <span>🔄</span> Reboot OS
+                        </button>
+                    </div>
+                </div>
+                <div class="log-window" id="log-window">
+                    <div class="log-content" id="log-content">
+                        <div class="log-line system">System initialized - Connected to ZenithOS kernel</div>
+                    </div>
+                </div>
+                <div class="log-footer">
+                    <span class="log-count">Lines: <span id="line-count">0</span></span>
+                    <span class="log-rate">Rate: <span id="log-rate">0</span> logs/s</span>
+                </div>
+            </div>
+
+            <!-- 中间：资源监控区 -->
+            <div class="panel memory-panel">
+                <div class="panel-header">
+                    <h2>Memory Usage</h2>
+                    <button id="memory-refresh" class="btn btn-small">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+                <div class="memory-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Memory</div>
+                        <div class="stat-value" id="memory-total">1024 MB</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Used Memory</div>
+                        <div class="stat-value" id="memory-used">0 MB</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Usage Rate</div>
+                        <div class="stat-value" id="memory-usage">0%</div>
+                    </div>
+                </div>
+                <div class="memory-chart">
+                    <canvas id="memory-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- 右侧：3D网格状态区 -->
+            <div class="panel grid-panel">
+                <div class="panel-header">
+                    <h2>3D Network Grid</h2>
+                    <span class="grid-status" id="grid-status">● Active</span>
+                </div>
+                <div class="grid-visualization">
+                    <canvas id="grid-canvas"></canvas>
+                </div>
+                <div class="grid-info">
+                    <div class="grid-info-item">
+                        <span class="info-label">Nodes:</span>
+                        <span class="info-value" id="grid-nodes">8</span>
+                    </div>
+                    <div class="grid-info-item">
+                        <span class="info-label">Topology:</span>
+                        <span class="info-value">Mesh Network</span>
+                    </div>
+                    <div class="grid-info-item">
+                        <span class="info-label">Last Update:</span>
+                        <span class="info-value" id="grid-timestamp">--</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部状态栏 -->
+        <footer class="footer">
+            <div class="footer-left">
+                <span class="footer-item">Connection: <span id="footer-connection">Disconnected</span></span>
+                <span class="footer-item">Uptime: <span id="uptime">0s</span></span>
+            </div>
+            <div class="footer-right">
+                <span class="footer-item">ZenithOS v0.1.0</span>
+                <span class="footer-item">Web Admin v1.0.0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
